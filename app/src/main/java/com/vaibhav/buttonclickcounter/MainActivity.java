@@ -2,6 +2,7 @@ package com.vaibhav.buttonclickcounter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText userInput;
     private Button button;
     private TextView textView;
+    private int numTimesClicked = 0; // Keeps track of clicks
 
 
     @Override
@@ -22,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
         userInput = (EditText) findViewById(R.id.editText);
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
+        View.OnClickListener ourOnClickListener = new View.OnClickListener() { // New object of type View.OnClockListener interface
+            @Override
+            public void onClick(View v) {
+                numTimesClicked = numTimesClicked + 1;
+                String result = "\nThe button got tapped " + numTimesClicked + " times";
+                textView.append(result);
+            }
+        };
+        button.setOnClickListener(ourOnClickListener); // Uses ourOnClickListener whenever the button is clicked
 
     }
 
