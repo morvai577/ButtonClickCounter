@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userInput = (EditText) findViewById(R.id.editText);
+        userInput.setText(""); // Initialise userInput with empty string
         Button button = (Button) findViewById(R.id.button); // Created a local variable for Button
         textView = (TextView) findViewById(R.id.textView);
         textView.setText(""); // Initialise textView with empty string
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                 String result = e.toString(); */
                 result = result + "\n";
                 textView.append(result);
+                userInput.setText(""); //Clear text after it has been addded to textView
             }
         };
         button.setOnClickListener(ourOnClickListener); // Uses ourOnClickListener whenever the button is clicked
